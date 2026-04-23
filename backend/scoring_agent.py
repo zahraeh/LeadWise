@@ -7,7 +7,7 @@ Takes a Lead, returns a ScoreResult.
 import json
 import os
 
-import anthropic
+import google.generativeai as genai
 
 from backend.config import CONFIGS
 from backend.models import Lead, LeadStatus, ScoreResult
@@ -15,7 +15,7 @@ from backend.models import Lead, LeadStatus, ScoreResult
 
 def score_lead(lead: Lead) -> ScoreResult:
     """
-    Send lead data to Claude API and get back a structured score.
+    Send lead data to Gemini API and get back a structured score.
     Returns a ScoreResult with score (0–10), status, reason, and action.
     """
 
@@ -55,15 +55,11 @@ The JSON must have exactly these fields:
 }}
 """
 
-    client = anthropic.Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
+    genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
+    model = genai.GenerativeModel("gemini-1.5-flash")
+    response = model.generate_content(prompt)
 
-    message = client.messages.create(
-        model="claude-sonnet-4-6",
-        max_tokens=300,
-        messages=[{"role": "user", "content": prompt}],
-    )
-
-    raw = message.content[0].text.strip()
+    raw = response.text.strip()
 
     # Clean potential markdown fences
     if raw.startswith("```"):

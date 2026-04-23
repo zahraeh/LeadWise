@@ -93,6 +93,9 @@ if submitted:
             try:
                 res = requests.post(f"{API_URL}/score", json=payload, timeout=30)
                 result = res.json()
+                if res.status_code != 200:
+                    st.error(f"❌ Erreur backend ({res.status_code}) : {result.get('detail', result)}")
+                    st.stop()
             except Exception as e:
                 st.error(f"Erreur de connexion au backend : {e}")
                 st.stop()
@@ -123,4 +126,4 @@ if submitted:
 
 # ── Footer ────────────────────────────────────────────────────
 st.divider()
-st.caption("LeadWise Core · Built by Zahra · Powered by Claude API (Anthropic) · Portfolio BA 2025")
+st.caption("LeadWise Core · Built by Zahra · Powered by Gemini API (Google) · Portfolio BA 2025")
