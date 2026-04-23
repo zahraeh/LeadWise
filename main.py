@@ -3,11 +3,14 @@ main.py — LeadWise Core
 FastAPI backend exposing lead scoring endpoints.
 """
 
+from typing import Optional
+
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+
+from backend.config import CONFIGS, get_config
 from backend.models import Lead, ScoreResult
 from backend.scoring_agent import score_lead
-from backend.config import get_config
 
 app = FastAPI(
     title="LeadWise Core API",
@@ -35,8 +38,10 @@ def root():
 
 
 @app.get("/config")
-def config_endpoint():
+def config_endpoint(industry: Optional[str] = None):
     """Return the active industry configuration (used by the frontend)."""
+    if industry and industry in CONFIGS:
+        return CONFIGS[industry]
     return get_config()
 
 

@@ -60,7 +60,12 @@ with st.form("lead_form"):
     dynamic_fields = {}
     for field in config["lead_fields"]:
         if field["type"] == "number":
-            val = st.number_input(field["label"], min_value=0, max_value=100, value=25)
+            val = st.number_input(
+                field["label"],
+                min_value=field.get("min", 0),
+                max_value=field.get("max", None),
+                value=field.get("default", 1),
+            )
             dynamic_fields[field["key"]] = val
         elif field["type"] == "select":
             val = st.selectbox(field["label"], options=field["options"])

@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(python --version)",
+      "PowerShell(pip --version)",
+      "PowerShell(pip install -r \"c:\\\\Users\\\\zahra\\\\Documents\\\\GitHub\\\\LeadWise\\\\requirements.txt\")"
+    ]
+  }
+}
