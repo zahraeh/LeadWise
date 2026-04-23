@@ -10,7 +10,8 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-API_URL = os.getenv("API_URL", "http://localhost:8000")
+_raw_url = os.getenv("API_URL", "http://localhost:8000")
+API_URL = _raw_url if _raw_url.startswith("http") else f"https://{_raw_url}"
 
 # ── Page config ──────────────────────────────────────────────
 st.set_page_config(
