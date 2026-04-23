@@ -1,8 +1,8 @@
-# ⚡ LeadWise Core
+# LeadWise Core
 
 > AI-powered lead qualification engine. Industry-agnostic. Built by a BA who documented every requirement behind it.
 
-## 🏗️ Project Structure
+## Project Structure
 
 ```
 leadwise-core/
@@ -23,7 +23,7 @@ leadwise-core/
 └── .env.example
 ```
 
-## 🚀 Run locally
+## Run locally
 
 ```bash
 # 1. Clone and install
@@ -42,16 +42,16 @@ uvicorn backend.main:app --reload
 streamlit run frontend/app.py
 ```
 
-## 🌍 Industries supported
+## Industries supported
 
 | Industry | Company | Product | Conv. Target |
 |----------|---------|---------|--------------|
-| 🏦 Banking | BankWise Retail | Livret A Boosté | 15% |
-| 🌍 Travel | LinguaWise International | Séjour Linguistique Été | 18% |
+| Banking | BankWise Retail | Livret A Boosté | 15% |
+| Travel | LinguaWise International | Séjour Linguistique Été | 18% |
 
-## 🛠️ Tech Stack
+## Tech Stack
 
-- **AI**: Claude API (Anthropic) — `claude-sonnet-4-20250514`
+- **AI**: Croq — 
 - **Backend**: Python / FastAPI
 - **Frontend**: Streamlit
 - **Deploy**: Render
@@ -61,4 +61,4 @@ streamlit run frontend/app.py
 Full requirements, user stories, GDPR analysis and test strategy available on Notion.
 
 ---
-Built by **Zahra** · BA Portfolio Project · 2025
+Built by **Zahra** · 
